@@ -2,8 +2,10 @@
   "name": "meteor-empty",
   "private": true,
   "scripts": {
-    "start": "meteor run",
-    "start:prod": "meteor --production run"
+    "start": "yarn && yarn meteor",
+    "meteor": "meteor run",
+    "test": "meteor test --driver-package=practicalmeteor:mocha",
+    "clr": "rm -rf node_modules && rm -rf .meteor/local"
   },
   "dependencies": {
     "axios": "^0.16.0",
@@ -16,8 +18,11 @@
     "font-awesome": "^4.7.0",
     "meteor-node-stubs": "^0.2.6",
     "method-override": "^2.3.8",
+    "moment": "^2.18.1",
     "react": "^15.4.2",
     "react-addons-pure-render-mixin": "^15.4.2",
+    "react-bootstrap": "^0.30.10",
+    "react-bootstrap-table": "^3.2.1",
     "react-dom": "^15.4.2",
     "react-helmet": "^5.0.2",
     "react-redux": "^5.0.3",

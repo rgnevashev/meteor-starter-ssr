@@ -52,4 +52,9 @@ percolate:synced-cron
 #
 react-meteor-data # 63kb tmeasday:check-npm-versions
 
+#
+# Tests
+#
+practicalmeteor:mocha # practicalmeteor:chai practicalmeteor:loglevel practicalmeteor:mocha-core practicalmeteor:sinon templating tmeasday:test-reporter-helpers
+
 # 498kb
