@@ -20,7 +20,7 @@ import { perfStart, perfStop } from '/imports/utils/perfMeasure'
 // * doesn't start with `/api/`
 // * doesn't start with `/__cordova/`
 // * contains no `.`
-const EXPRESS_COVERED_URL = /^\/(?!api\/)(?!__cordova\/)[^.]*$/;
+const EXPRESS_COVERED_URL = /^\/(?!api\/)(?!__cordova\/)[^.]*$/
 
 const app = express()
 
@@ -28,27 +28,29 @@ app
   .use('/api', api)
   .route(EXPRESS_COVERED_URL)
   .get((req, res, next) => {
+
     // Start performance cheking
     perfStart()
+
     // inside a request
     const promises = []
-    // use `some` to imitate `<Switch>` behavior of selecting only
-    // the first to match
-    routes.some(route => {
+
+    // use `some` to imitate `<Switch>` behavior of selecting only the first to match
+    routes.some((route) => {
       // use `matchPath` here
       const match = matchPath(req.url, route)
-      if (match && route.loadData) {
-        promises.push(route.loadData(match))
+      if (match && route.fetchData) {
+        promises.push(route.fetchData(match))
       }
       return match
     })
 
-    Promise.all(promises).then(data => {
-      // do something w/ the data so the client
-      // can access it then render the app
+    Promise.all(promises).then((data) => {
+
+      const initialState = data.reduce((prev, curr) => ({ ...prev, ...curr }), {})
 
       const context = {}
-      const store = configureStore()
+      const store = configureStore(initialState)
       const html = ReactDOMServer.renderToString(
         <Provider store={store}>
           <Router location={req.url} context={context}>
@@ -62,9 +64,8 @@ app
         <div id="app-root">${html}</div>
         <script>window.__INITIAL_STATE__ = ${JSON.stringify(store.getState())}</script>
       `
-      //req.dynamicHead = `<title>QuizLabs</title>`
       req.dynamicHead = ['title', 'meta', 'link', 'script']
-        .reduce((acc, key) => `${acc}${helmetHead[key].toString()}`, '');
+        .reduce((acc, key) => `${acc}${helmetHead[key].toString()}`, '')
 
       // WebAppInternals.addStaticJs(`<script>window.__INITIAL_STATE__ = ${JSON.stringify(store.getState())}</script>`)
 

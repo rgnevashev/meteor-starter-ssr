@@ -50,7 +50,7 @@ percolate:synced-cron
 #
 # React
 #
-react-meteor-data # 63kb tmeasday:check-npm-versions
+react-meteor-data # 63kb tmeasday:check-npm-versions react-addons-pure-render-mixin
 
 #
 # Tests

@@ -8,7 +8,7 @@ import '/imports/styles'
 
 import configureStore from '/imports/store'
 
-import App from '/imports/containers/App'
+import App from '/imports/components/App'
 
 const initialState = window.__INITIAL_STATE__
 const store = configureStore(initialState)
