@@ -1,3 +1,4 @@
+// eslint-disable no-underscore-dangle
 //import SimpleSchema from 'simpl-schema' // !250kb
 import React from 'react'
 import { render } from 'react-dom' // !200kb
@@ -23,4 +24,6 @@ Meteor.startup(() => {
   ), document.getElementById('app-root'))
 })
 
-// 1021kb
+// App: 520kb
+
+// All: 1006kb

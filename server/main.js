@@ -79,7 +79,7 @@ app
       }
 
       // End performance cheking
-      perfStop(`${req.url}`);
+      perfStop(`${req.originalUrl}`)
     })
   })
 
