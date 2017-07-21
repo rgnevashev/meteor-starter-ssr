@@ -12,12 +12,6 @@ router
       url: req.originalUrl
     })
   })
-  .post('/playlist', (req, res) => {
-    res.send({
-      body: req.body,
-      url: req.originalUrl
-    })
-  })
   .put('/playlist/:playlistId', (req, res) => {
     res.send({
       body: req.body,

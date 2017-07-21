@@ -17,7 +17,7 @@ class App extends React.Component {
     return (
       <div>
         <Helmet>
-          <title>QuizLabs</title>
+          <title>Meteor Starter Kit</title>
         </Helmet>
         <div className="container">
           <ul>

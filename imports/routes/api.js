@@ -1,6 +1,7 @@
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
 import asset from './asset'
 import playlist from './playlist'
@@ -11,6 +12,7 @@ const api = express.Router({
 })
 
 api
+  .use(cors())
   .use(cookieParser())
   .use(bodyParser.json()) // for parsing application/json
   .use(bodyParser.urlencoded({ extended: true })) // // for parsing application/x-www-form-urlencoded
